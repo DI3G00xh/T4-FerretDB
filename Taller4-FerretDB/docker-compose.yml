@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: ferretdb_backend_postgres
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ferretdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  ferretdb:
+    image: ghcr.io/ferretdb/ferretdb:1
+    container_name: ferretdb
+    ports:
+      - "27017:27017"
+    command: ["--postgresql-url=postgres://username:password@postgres:5432/ferretdb"]
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
