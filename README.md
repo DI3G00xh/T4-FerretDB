@@ -1,4 +1,4 @@
-# Despliegue Taller 4
+# Despliegue Taller 4 - Diego Adaos
 
 
 # Chatbot IA Local con Persistencia y Streaming - Taller 4
